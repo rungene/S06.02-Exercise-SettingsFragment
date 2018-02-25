@@ -4,18 +4,18 @@
     android:layout_height="match_parent"
     >
     <EditTextPreference
-    android:defaultValue="Mountain View, CA 94843"
+    android:defaultValue="@string/pref_location_default"
         android:inputType="text"
-        android:key="location"
+        android:key="@string/pref_location_key"
         android:singleLine="true"
-        android:title="Location"
+        android:title="@string/pref_location_label"
    />
 
     <ListPreference
-        android:defaultValue="metric"
+        android:defaultValue="@string/pref_units_metric"
         android:entries="@array/pref_units_options"
         android:entryValues="@array/pref_units_values"
-        android:key="location"
-        android:title="Temperature Units"
+        android:key="@string/pref_units_key"
+        android:title="@string/pref_units_label"
         />
 </PreferenceScreen>

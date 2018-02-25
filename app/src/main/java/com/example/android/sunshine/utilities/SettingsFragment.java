@@ -13,16 +13,20 @@ import com.example.android.sunshine.R;
 /**
  * Created by SAM on 2/24/2018.
  */
-
+//create settings fragment and extend preference fragment
 public class SettingsFragment extends PreferenceFragmentCompat implements
-
+        // COMPLETED (10) Implement OnSharedPreferenceChangeListener from SettingsFragment
         SharedPreferences.OnSharedPreferenceChangeListener{
 
+// Create a method called setPreferenceSummary that accepts a Preference and an Object and sets the summary of the preference
     private void setPreferenceSummary(Preference preference, Object value){
         String stringValue = value.toString();
         String key = preference.getKey();
 
         if (preference instanceof ListPreference){
+             /* For list preferences, look up the correct display value in */
+            /* the preference's 'entries' list (since they have separate labels/values). */
+
             ListPreference listPreference = (ListPreference) preference;
             int prefIndex =listPreference.findIndexOfValue(stringValue);
 
@@ -30,12 +34,14 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 preference.setSummary(listPreference.getEntries()[prefIndex]);
             }
             else {
+                // For other preferences, set the summary to the value's simple string representation.
                 preference.setSummary(stringValue);
             }
         }
 
 
     }
+    //Override onSharedPreferenceChanged to update non CheckBoxPreferences when they are changed
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         Preference preference = findPreference(key);
@@ -46,6 +52,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         }
 
     }
+    // COMPLETED (5) Override onCreatePreferences and add the preference xml file using addPreferencesFromResource
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
